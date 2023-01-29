@@ -124,4 +124,6 @@ button.addEventListener("click", () => {
 
 const seeRank = () => {
   // alert("ciao");
+  let h5 = document.querySelectorAll("h5");
+  alert(h5);
 };
