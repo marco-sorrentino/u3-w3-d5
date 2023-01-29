@@ -155,13 +155,3 @@ const createHateCard = () => {
 };
 
 // RANK FUNCTION
-
-button.addEventListener("click", () => {
-  seeRank();
-});
-
-const seeRank = () => {
-  // alert("ciao");
-  let h5 = document.querySelectorAll("h5");
-  alert(h5);
-};
