@@ -1,10 +1,12 @@
 const leftCardPage = document.getElementById("leftCard");
 const myCards = document.getElementById("myCards");
 const carousel = document.getElementById("myCarousel");
+const hateArtist = document.getElementById("hateArtist");
 const button = document.getElementById("cta");
 const modalText = document.getElementById("modalText");
 
 let data;
+let data2;
 
 const getData = async () => {
   try {
@@ -38,11 +40,8 @@ const createCenterCard = () => {
           <div class="card-img-overlay">
             <h5 class="card-title title">${el.artist.name}</h5>
             <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              He is my favourite artist
             </p>
-            <p class="card-text"><small>Last updated 3 mins ago</small></p>
           </div>
         </div>
 
@@ -113,6 +112,45 @@ const createCarousel = () => {
           </div>
           `;
     }
+  });
+};
+
+// Hate artist
+
+const getHateArtist = async () => {
+  try {
+    let res2 = await fetch(
+      "https://striveschool-api.herokuapp.com/api/deezer/search?q=psy"
+    );
+
+    if (res2.ok) {
+      data2 = await res2.json();
+      createHateCard();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getHateArtist();
+
+const createHateCard = () => {
+  let contentCard2 = [data2.data[0]];
+  contentCard2.forEach((el) => {
+    hateArtist.innerHTML =
+      hateArtist.innerHTML +
+      `
+      <div class="card text-bg-dark rounded-0">
+      <img src="${el.artist.picture_xl}" class="card-img rounded-0" alt="..." />
+      <div class="card-img-overlay">
+        <h5 class="card-title title">${el.artist.name}</h5>
+        <p class="card-text">
+        I'm sorry spy, but I can't stand you
+        </p>
+      </div>
+    </div>
+    
+    `;
   });
 };
 
