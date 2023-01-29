@@ -58,7 +58,7 @@ const createThreeCards = () => {
       el.title === "Starboy" ||
       el.title === "Save Your Tears" ||
       el.title === "The Hills" ||
-      el.title === "Blinding Lights"
+      el.title === "I Was Never There"
   );
 
   myFavSongs.forEach((el) => {
@@ -88,6 +88,29 @@ const createThreeCards = () => {
       `
     <p>${el.title}</p>
     `;
+
+    // ALERT
+
+    const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+
+    const alert = (message, type) => {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        "</div>",
+      ].join("");
+
+      alertPlaceholder.append(wrapper);
+    };
+
+    const alertTrigger = document.getElementById("liveAlertBtn");
+    if (alertTrigger) {
+      alertTrigger.addEventListener("click", () => {
+        alert(el.title, "success");
+      });
+    }
   });
 
   console.log(myFavSongs);
